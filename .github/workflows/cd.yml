@@ -1,9 +1,8 @@
-name: CI
+name: CD - Deployment
 
 on:
   push:
-    branches: [ master ]
-  pull_request:
+    branches: [ main, master ]
 
 jobs:
   run-tests:
@@ -34,7 +33,7 @@ jobs:
             --cov=. \
             --cov-report=term \
             --cov-report=xml \
-            --cov-report=html \
+            --cov-report=html
 
       - name: Prepare the webpage
         run: |
@@ -56,5 +55,3 @@ jobs:
     steps:
       - name: deploy the artifacts
         uses: actions/deploy-pages@v4
-    
-    
